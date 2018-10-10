@@ -8,6 +8,10 @@ $(function(){
     var shuffleButton = $('#shuffle-button');
     var vimeoFrame = $('#vimeo-frame');
     
+    var currentVideoNumber = ''; //string
+    var previousVideoNumber = ''; //string
+    
+    
     
     //***************************************
     //*************  PAGE SETUP
@@ -18,6 +22,7 @@ $(function(){
         
         digitArray[i] = new Digit('', $('.digit').eq(i), false);
     }
+    
     
     //***************************************
     //*************  FUNCTIONS
@@ -61,7 +66,7 @@ $(function(){
                 //else, same number or do nothing
             }  
             
-            console.log('digit value ' + i + ' equals ' + digitObj.digitValue);
+            console.log('digit value ' + j + ' equals ' + digitObj.digitValue);
             
             //add digit value to the new url
             newUrl = newUrl + digitObj.digitValue;
@@ -69,11 +74,7 @@ $(function(){
         } //end of for loop
         
                 
-        //update vimeo frame with new digits in url
-        updateVimeoFrame(newUrl);
-        
-        //update the actual text display with function 
-        updateTextDisplay(newUrl);
+        return newUrl;
         
     }
     
@@ -95,14 +96,21 @@ $(function(){
         //replace any dashes in url with empty string
         urlDigits = urlDigits.replace(/-/g, '');
         
-        console.log('urlDigits is ' + urlDigits);
-        
         //create new url
         var newSrc = 'https://player.vimeo.com/video/' + urlDigits + '?autoplay=1&color=fdfdfd&title=0&byline=0&portrait=0';
          
         //update attribute
         vimeoFrame.attr('src', newSrc);
-         
+        
+        console.log('updated frame with ' + urlDigits);
+        
+        
+        //this is supposed to get the title of the video
+        /*
+        var pageTitle = vimeoFrame.contents().find('html').filter('title').text();
+        
+        console.log(pageTitle);
+        */
     }
     
     
@@ -114,7 +122,15 @@ $(function(){
     
     shuffleButton.click(function(){
         
-        shuffleNumbers();
+        previousVideoNumber = currentVideoNumber;
+        currentVideoNumber = shuffleNumbers();
+        
+        //update vimeo frame with new digits in url
+        updateVimeoFrame(currentVideoNumber);
+        
+        //update the actual text display with function 
+        updateTextDisplay(currentVideoNumber);
+        
     });
     
     
