@@ -1,5 +1,7 @@
+//***** Randimeo javascripteo
+
+//I'M READY I'M READY I'M READY
 $(function(){
-    
     
     
     //***************************************
@@ -7,22 +9,40 @@ $(function(){
     
     var shuffleButton = $('#shuffle-button');
     var vimeoFrame = $('#vimeo-frame');
+    var clearLockButton = $('#clear-lock-button');
+    var backButton = $('#back-button');
     
     var currentVideoNumber = ''; //string
     var previousVideoNumber = ''; //string
+    
+    
+    //use these in place of local storage while building
+    //format is 'url, faveSlot, faveColor'
+    var testFave0 = null;
+    var testFave1 = null;
+    var testFave2 = null;
     
     
     
     //***************************************
     //*************  PAGE SETUP
     
-    var digitArray = new Array();
+    //create array of digit objects
+    var digitArray = new Array(); 
     
     for (var i=0; i<9; i++) {
         
-        digitArray[i] = new Digit('', $('.digit').eq(i), false);
+        digitArray[i] = new Digit('-', $('.digit').eq(i), false);
     }
     
+    //create array of fave objects
+    var faveArray = new Array();
+    
+    faveArray[0] = testFave0;
+    faveArray[1] = testFave1;
+    faveArray[2] = testFave2;
+    
+
     
     //***************************************
     //*************  FUNCTIONS
@@ -34,6 +54,12 @@ $(function(){
         this.locked = locked;
     }
     
+    function Fave(faveData) {
+        
+        this.faveURL = faveData[0];
+        this.faveSlot = faveData[1];
+        this.faveColor = faveData[2];
+    }
     
     //random integer function
     function getRandomInt(min, max) {
@@ -75,7 +101,6 @@ $(function(){
         
                 
         return newUrl;
-        
     }
     
         
@@ -102,17 +127,9 @@ $(function(){
         //update attribute
         vimeoFrame.attr('src', newSrc);
         
+        //debug
         console.log('updated frame with ' + urlDigits);
-        
-        
-        //this is supposed to get the title of the video
-        /*
-        var pageTitle = vimeoFrame.contents().find('html').filter('title').text();
-        
-        console.log(pageTitle);
-        */
     }
-    
     
     
     
@@ -132,6 +149,39 @@ $(function(){
         updateTextDisplay(currentVideoNumber);
         
     });
+    
+    
+    
+    $('.digit').click(function(event){
+        
+        var thisDigitDOM = $(event.target);
+            
+        thisDigitObj = digitArray[thisDigitDOM.index()];
+        
+        if (thisDigitObj.locked == true){
+            
+            thisDigitDOM.removeClass('digit-locked');
+            thisDigitObj.locked = false;
+                        
+        } else {
+            
+            thisDigitDOM.addClass('digit-locked');
+            thisDigitObj.locked = true;
+            
+            //clearLockButton.addClass('clear-lock-visible');
+        }
+        
+    });
+    
+    
+    backButton.click(function(){
+       
+        updateTextDisplay(previousVideoNumber);
+        updateVimeoFrame(previousVideoNumber);
+    });
+    
+    
+    
     
     
     
