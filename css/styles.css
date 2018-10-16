@@ -12,11 +12,19 @@
     user-select: none;          /* Likely future */ 
 }
 
-body, html {
+html {
     
-    font-family: 'Open Sans', sans-serif;
     height: 100%;
     width: 100%;
+    background-image: url('../img/what-the-hex.png');
+}
+
+body {
+    
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(220,220,220,0.6);
 }
 
 #wrapper {
@@ -37,6 +45,8 @@ body, html {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.1em;
+    
+    text-shadow: 0px 3px 0px #face10, 0px 4px 8px #fff;
 }
 
 #monitor {
@@ -66,14 +76,15 @@ body, html {
     left: -0.5%;
 }
 
-#vimeo-frame {}
+#vimeo-frame {
+    
+}
 
 #controls {
     
     display: block;
     position: relative;
     width: 100%;
-    background-color: aqua;
     height: 48px;
     
     margin: 24px auto;
@@ -105,6 +116,31 @@ body, html {
     border: 1px solid black;
 }
 
+.fave.fave-base {
+    
+    
+}
+
+.fave.fave-ready {
+    
+    cursor: pointer;
+}
+
+.fave.fave-marked {
+    
+    cursor: pointer;
+}
+
+.fave.fave-marked:hover {
+    
+    
+}
+
+.fave.fave-marked:hover .fave-menu {
+    
+    
+}
+
 #digit-list {
     
     display: block;
@@ -117,26 +153,87 @@ body, html {
     
     padding: 9px 0px;
     margin: 0px;
-    border: 1px solid black;
+    
+    border-radius: 2px;
+    border: 1px solid #222;
+    background-color: #caced7;
 }
 
 .digit {
     
     display: inline-block;
+    position: relative;
+    top: 0px;
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid #222;
     margin: 0px 0px;
     text-align: center;
     padding-top: 6px;
     font-weight: 700;
     font-size: 16px;
+    
+    color: #222;
+    background-color: #aedde5;
+    border-radius: 15px;
+    cursor: pointer;
+    
+    transition: top 360ms ease-in-out;
+}
+
+.digit:hover {
+    
+    background-color: white;
+    color: #222;
+}
+
+.digit:active {
+
+    color: aliceblue;
 }
 
 .digit-locked {
     
-    background-color: #ddd;
+    background-color: #bbb;
     color: #999;
+    border-radius: 2px;
+    top: -20px;
+    
+}
+
+#clear-lock-button {
+    
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    right: 0px;
+    top: calc(50% - 10px);
+    padding: 2px 0px;
+    color: #555;
+    text-align: center;
+    overflow: hidden;
+}
+
+#clear-lock-button i {
+    
+    position: relative;
+    right: 30px;
+    
+    color: rgba(100,100,100,0);
+    
+    transition: right 120ms ease-out, color 120ms ease-out;
+}
+
+#clear-lock-button.clear-lock-visible i {
+    
+    right: 0;
+    color: rgba(100,100,100,1);
+}
+
+#clear-lock-button i:hover {
+    
+    color: rgba(40,40,40,1);
 }
 
 #button-box {
@@ -186,7 +283,26 @@ body, html {
     background-color: yellow;
 }
 
+#secret-back-box {
+    
+    display: block;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+}
 
+#back-button {
+    
+    display: none;
+    cursor: pointer;
+}
 
+#secret-back-box:hover #back-button {
+    
+    display: inline-block;
+}
 
 
