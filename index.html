@@ -5,7 +5,12 @@
     <head>
         
         <title>Randimeo</title>
+        
         <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="Random videos. Artisanally uncurated.">
         
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
         
@@ -26,7 +31,7 @@
                 
                 <div id="slight-crop">
                     <!---->
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe id="vimeo-frame" src="https://player.vimeo.com/video/287103350?autoplay=1&color=fdfdfd&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe id="vimeo-frame" src="https://player.vimeo.com/video/?autoplay=1&color=fdfdfd&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                     <!---->
                 </div>
        
@@ -35,28 +40,29 @@
             <!-- ********* CONTROLS ******** -->
             <div id="controls">
                 
-                <ul id="fave-list" class="control-piece">
+                <ul id="fave-list" class="control-piece no-select">
                     <!---->
-                    <li class="fave">&#10084;1</li>
-                    <li class="fave">&#10084;2</li>
-                    <li class="fave">&#10084;3</li>
+                    <li id="fave0" class="fave no-select">&#10084;</li>
+                    <li id="fave1" class="fave no-select">&#10084;</li>
+                    <li id="fave2" class="fave no-select">&#10084;</li>
                     <!---->
                 </ul>
                 
-                <ul id="digit-list" class="control-piece">
+                <ul id="digit-list" class="control-piece no-select">
                     <!---->
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
                     <!---->
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
                     <!---->
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
-                    <li class="digit">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
+                    <li class="digit no-select">-</li>
                     <!---->
+                    <li id="clear-lock-button" class="no-select"><i>&times;</i></li>
                 </ul>
                 
                 <ul id="button-box" class="control-piece">
@@ -68,15 +74,34 @@
             
             </div>
             
+            <div id="secret-back-box"><div id="back-button">&larr;</div></div>
+            
             
         </article>
         
         
-    
+        
+        <!-- FIREBASE -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBijM5lDbTdNMRO5VxiwAgzDYVEGo0oqys",
+            authDomain: "randimeo-101018.firebaseapp.com",
+            databaseURL: "https://randimeo-101018.firebaseio.com",
+            projectId: "randimeo-101018",
+            storageBucket: "randimeo-101018.appspot.com",
+            messagingSenderId: "996030780485"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
+        
         <!-- TASTY SCRIPTS -->
         <script src="js/jquery.min.js" type="text/javascript"></script>
-        
         <script src="js/main.js" type="text/javascript"></script>
+        
+        
         
     </body>
 
