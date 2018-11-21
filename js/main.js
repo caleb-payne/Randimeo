@@ -16,13 +16,6 @@ $(function(){
     var previousVideoNumber = ''; //string
     
     
-    //use these in place of local storage while building
-    //format is 'url, faveSlot, faveColor'
-    var testFave0 = null;
-    var testFave1 = null;
-    var testFave2 = null;
-    
-    
     
     //***************************************
     //*************  PAGE SETUP
@@ -35,17 +28,41 @@ $(function(){
         digitArray[i] = new Digit('-', $('.digit').eq(i), false);
     }
     
-    //create array of fave objects
-    var faveArray = new Array();
     
-    faveArray[0] = testFave0;
-    faveArray[1] = testFave1;
-    faveArray[2] = testFave2;
-    
-
     
     //***************************************
-    //*************  FUNCTIONS
+    //*************  UTILITY FUNCTIONS
+        
+    function rgbToHex(rgb) { 
+        
+        var hex = Number(rgb).toString(16);
+        if (hex.length < 2) {hex = "0" + hex;}
+        return hex;
+    };
+    
+        
+    function linear(incoming,bottom,top,min,max,cap) {
+ 
+        var oldRange = top-bottom;
+        var newRange = max-min;
+        
+        //var remapped = (newRange * incoming - newRange * bottom)/oldRange + min;
+
+        remapped = (newRange*incoming)/oldRange;
+        
+        if (cap) {
+            
+            if (remapped>max) {remapped=max}
+            else if (remapped<min) {remapped=min}
+        }
+        
+        return remapped;
+    }
+
+    
+    
+    //***************************************
+    //*************  RANDIMEO FUNCTIONS
     
     function Digit(digitValue, displaySlot, locked) {
         
@@ -57,8 +74,9 @@ $(function(){
     function Fave(faveData) {
         
         this.faveURL = faveData[0];
-        this.faveSlot = faveData[1];
+        this.faveSlot = $(faveData[1]);
         this.faveColor = faveData[2];
+        this.lleno = faveData[3]=='0' ? false : true;
     }
     
     //random integer function
@@ -133,6 +151,25 @@ $(function(){
     
     
     
+    function getFaveColor(urlNum) {
+        
+        var ch = Math.floor(urlNum.length()/3);
+        
+        var red = parseInt(urlNum.substr(0,ch));
+        var green = parseInt(urlNum.substr(ch,ch));
+        var blue = parseInt(urlNum.substr(ch*2));
+        
+        var range = Math.pow(10,ch);
+            
+        red = linear(red,0,range,0,255,true);
+        green = linear(green,0,range,0,255,true);
+        blue = linear(blue,0,range,0,255,true);
+        
+        return '#' + rgbToHex(red) + rgbToHex(green) + rgbToHex(blue);
+    }
+     
+    
+    
     //***************************************
     //*************  EVENTS
     
@@ -167,8 +204,6 @@ $(function(){
             
             thisDigitDOM.addClass('digit-locked');
             thisDigitObj.locked = true;
-            
-            //clearLockButton.addClass('clear-lock-visible');
         }
         
     });
@@ -178,9 +213,11 @@ $(function(){
        
         updateTextDisplay(previousVideoNumber);
         updateVimeoFrame(previousVideoNumber);
+        
+        var temp = currentVideoNumber;
+        currentVideoNumber = previousVideoNumber;
+        previousVideoNumber = temp;
     });
-    
-    
     
     
     

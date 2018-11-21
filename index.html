@@ -16,6 +16,8 @@
         
         <link rel="stylesheet" href="css/reset.css" type="text/css">
         <link rel="stylesheet" href="css/styles.css" type="text/css">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
           
     </head>
 
@@ -42,9 +44,47 @@
                 
                 <ul id="fave-list" class="control-piece no-select">
                     <!---->
-                    <li id="fave0" class="fave no-select">&#10084;</li>
-                    <li id="fave1" class="fave no-select">&#10084;</li>
-                    <li id="fave2" class="fave no-select">&#10084;</li>
+                    <li id="fave0" class="fave no-select">
+                        <div class="hug fave-jewel-base">
+                            <i class="hug">&bull;</i>
+                        </div>
+                        <div class="hug fave-jewel-ready">
+                            <i class="hug">&#43;</i>
+                        </div>
+                        <div class="hug fave-jewel-active">
+                            <i class="hug bmark-button far fa-bookmark"></i>
+                            <i class="bmark-trash fas fa-ban"></i>
+                            <p class="bmark-number">000000000</p>
+                        </div>
+                    </li>
+                    <!---->
+                    <li id="fave1" class="fave no-select">
+                        <div class="hug fave-jewel-base">
+                            <i class="hug">&bull;</i>
+                        </div>
+                        <div class="hug fave-jewel-ready">
+                            <i class="hug">&#43;</i>
+                        </div>
+                        <div class="hug fave-jewel-active">
+                            <i class="hug bmark-button far fa-bookmark"></i>
+                            <i class="bmark-trash fas fa-ban"></i>
+                            <p class="bmark-number">000000000</p>
+                        </div>
+                    </li>
+                    <!---->
+                    <li id="fave2" class="fave no-select">
+                        <div class="hug fave-jewel-base">
+                            <i class="hug">&bull;</i>
+                        </div>
+                        <div class="hug fave-jewel-ready">
+                            <i class="hug">&#43;</i>
+                        </div>
+                        <div class="hug fave-jewel-active">
+                            <i class="hug bmark-button far fa-bookmark"></i>
+                            <i class="bmark-trash fas fa-ban"></i>
+                            <p class="bmark-number">000000000</p>
+                        </div>
+                    </li>
                     <!---->
                 </ul>
                 
@@ -67,7 +107,7 @@
                 
                 <ul id="button-box" class="control-piece">
                     <li>
-                        <div id="shuffle-button" class="no-select">&rarr;</div>
+                        <div id="shuffle-button" class="no-select"><i class="fas fa-fast-forward"></i></div>
                     </li>
                 </ul>
                 
@@ -80,9 +120,8 @@
         </article>
         
         
-        
         <!-- FIREBASE -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        <!--<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
         <script>
           // Initialize Firebase
           var config = {
@@ -94,10 +133,10 @@
             messagingSenderId: "996030780485"
           };
           firebase.initializeApp(config);
-        </script>
+        </script>-->
         
         
-        <!-- TASTY SCRIPTS -->
+        <!-- OTHER TASTY SCRIPTS -->
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
         
