@@ -24,6 +24,7 @@
 
     <body>
     
+        <button id="clear-storage-button">CLEAR STORAGE</button>
         <article id="wrapper">
             
             <h1 id="page-title">Randimeo</h1>
@@ -42,50 +43,10 @@
             <!-- ********* CONTROLS ******** -->
             <div id="controls">
                 
-                <ul id="fave-list" class="control-piece no-select">
-                    <!---->
-                    <li id="fave0" class="fave no-select">
-                        <div class="hug fave-jewel-base">
-                            <i class="hug">&bull;</i>
-                        </div>
-                        <div class="hug fave-jewel-ready">
-                            <i class="hug">&#43;</i>
-                        </div>
-                        <div class="hug fave-jewel-active">
-                            <i class="hug bmark-button far fa-bookmark"></i>
-                            <i class="bmark-trash fas fa-ban"></i>
-                            <p class="bmark-number">000000000</p>
-                        </div>
-                    </li>
-                    <!---->
-                    <li id="fave1" class="fave no-select">
-                        <div class="hug fave-jewel-base">
-                            <i class="hug">&bull;</i>
-                        </div>
-                        <div class="hug fave-jewel-ready">
-                            <i class="hug">&#43;</i>
-                        </div>
-                        <div class="hug fave-jewel-active">
-                            <i class="hug bmark-button far fa-bookmark"></i>
-                            <i class="bmark-trash fas fa-ban"></i>
-                            <p class="bmark-number">000000000</p>
-                        </div>
-                    </li>
-                    <!---->
-                    <li id="fave2" class="fave no-select">
-                        <div class="hug fave-jewel-base">
-                            <i class="hug">&bull;</i>
-                        </div>
-                        <div class="hug fave-jewel-ready">
-                            <i class="hug">&#43;</i>
-                        </div>
-                        <div class="hug fave-jewel-active">
-                            <i class="hug bmark-button far fa-bookmark"></i>
-                            <i class="bmark-trash fas fa-ban"></i>
-                            <p class="bmark-number">000000000</p>
-                        </div>
-                    </li>
-                    <!---->
+                <ul id="bookmark-list" class="control-piece no-select">
+                    
+                    <li id="add-button">+</li>
+                    
                 </ul>
                 
                 <ul id="digit-list" class="control-piece no-select">
@@ -103,6 +64,7 @@
                     <li class="digit no-select">-</li>
                     <!---->
                     <li id="clear-lock-button" class="no-select"><i>&times;</i></li>
+                    <!---->
                 </ul>
                 
                 <ul id="button-box" class="control-piece">
@@ -110,8 +72,6 @@
                         <div id="shuffle-button" class="no-select"><i class="fas fa-fast-forward"></i></div>
                     </li>
                 </ul>
-                
-            
             </div>
             
             <div id="secret-back-box"><div id="back-button">&larr;</div></div>
@@ -120,7 +80,8 @@
         </article>
         
         
-        <!-- FIREBASE -->
+    <!--
+        FIREBASE -->
         <!--<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
         <script>
           // Initialize Firebase
@@ -133,7 +94,8 @@
             messagingSenderId: "996030780485"
           };
           firebase.initializeApp(config);
-        </script>-->
+        </script>
+    -->
         
         
         <!-- OTHER TASTY SCRIPTS -->
